@@ -1,3 +1,6 @@
 data.json
 .env
 .env.local
+__pycache__/
+*.pyc
+*.pyo
