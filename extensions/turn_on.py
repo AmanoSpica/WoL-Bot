@@ -1,4 +1,5 @@
 import json
+import os
 import subprocess
 
 import discord
@@ -13,6 +14,19 @@ json_file = 'data.json'
 
 
 def load_json():
+    if not os.path.exists(json_file):
+        # Create default structure if file doesn't exist
+        default_data = {
+            "mac_address": "",
+            "ip_address": "",
+            "password": "",
+            "user_ids": [],
+            "text_channel_id": None,
+            "message_id": None
+        }
+        save_json(default_data)
+        return default_data
+    
     with open(json_file, 'r') as f:
         return json.load(f)
 
